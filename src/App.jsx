@@ -92,10 +92,17 @@ const App = () => {
   const numQuestions = questions.length;
   const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
 
+  // useEffect(function () {
+  //   fetch("/questions")
+  //     .then(res => res.json())
+  //     .then(data => dispatch({ type: "dataReceived", payload: data }))
+  //     .catch(() => dispatch({ type: "dataFailed" }));
+  // }, []);
+
   useEffect(function () {
-    fetch("/questions")
+    fetch("../data/questions.json")
       .then(res => res.json())
-      .then(data => dispatch({ type: "dataReceived", payload: data }))
+      .then(data => dispatch({ type: "dataReceived", payload: data.questions }))
       .catch(() => dispatch({ type: "dataFailed" }));
   }, []);
 
