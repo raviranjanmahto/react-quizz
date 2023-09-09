@@ -27,6 +27,7 @@ body {
   color: var(--color-light);
   background-color: var(--color-darkest);
   padding: 3.2rem;
+  user-select: none;
 }
 
 .app {

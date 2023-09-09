@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    // proxy: {
-    //   "/questions": {
-    //     target: "http://localhost:7003",
-    //     changeOrigin: true,
-    //   },
-    // },
+    proxy: {
+      "/questions": {
+        target: "http://localhost:7003",
+        changeOrigin: true,
+      },
+    },
   },
 });

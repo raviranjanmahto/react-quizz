@@ -1,5 +1,8 @@
-/* eslint-disable react/prop-types */
-const FinishScreen = ({ points, maxPoints, highscore, dispatch }) => {
+import { useAppContext } from "../context/appContext";
+
+const FinishScreen = () => {
+  const { points, highscore, questions, restartQuiz } = useAppContext();
+  const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
   const percentage = (points / maxPoints) * 100;
 
   let emoji;
@@ -16,10 +19,7 @@ const FinishScreen = ({ points, maxPoints, highscore, dispatch }) => {
         {maxPoints} ({Math.ceil(percentage)}%)
       </p>
       <p className='highscore'>(Highscore: {highscore} points)</p>
-      <button
-        className='btn btn-ui'
-        onClick={() => dispatch({ type: "restart" })}
-      >
+      <button className='btn btn-ui' onClick={restartQuiz}>
         Restart quiz
       </button>
     </>

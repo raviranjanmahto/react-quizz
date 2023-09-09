@@ -1,5 +1,11 @@
-/* eslint-disable react/prop-types */
-const Progress = ({ index, numQuestions, points, maxPoints, answer }) => {
+import { useAppContext } from "../context/appContext";
+
+const Progress = () => {
+  const { index, points, answer, questions } = useAppContext();
+
+  const numQuestions = questions.length;
+  const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
+
   return (
     <header className='progress'>
       <progress max={numQuestions} value={index + +(answer !== null)} />

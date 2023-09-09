@@ -1,11 +1,13 @@
-/* eslint-disable react/prop-types */
+import { useAppContext } from "../context/appContext";
 import Option from "./Option";
 
-const Question = ({ question, dispatch, answer }) => {
+const Question = () => {
+  const { questions, index } = useAppContext();
+
   return (
     <div>
-      <h4>{question.question}</h4>
-      <Option question={question} dispatch={dispatch} answer={answer} />
+      <h4>{questions[index].question}</h4>
+      <Option />
     </div>
   );
 };
